@@ -25,8 +25,6 @@ module THREE.PointLight
   , getPower
   , setPower
   , modifyPower
-  , getShadow
-  , setShadow
     -- * Optional properties
     -- * Methods
   , copy
@@ -39,7 +37,6 @@ import           Language.Javascript.JSaddle
 import           THREE.Internal as THREE
 import           THREE.Light as THREE
 import           THREE.Object3D as THREE
-import           THREE.PointLightShadow as THREE
 -----------------------------------------------------------------------------
 newtype PointLight
   = PointLight
@@ -87,12 +84,6 @@ setPower = mkSet "power"
 -----------------------------------------------------------------------------
 modifyPower :: (Double -> JSM Double) -> PointLight -> JSM Double
 modifyPower = mkModify "power"
------------------------------------------------------------------------------
-getShadow :: PointLight -> JSM PointLightShadow
-getShadow = mkGet "shadow"
------------------------------------------------------------------------------
-setShadow :: PointLightShadow -> PointLight -> JSM ()
-setShadow = mkSet "shadow"
 -----------------------------------------------------------------------------
 -- Optional properties
 -----------------------------------------------------------------------------
