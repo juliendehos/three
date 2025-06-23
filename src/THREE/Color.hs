@@ -1,26 +1,45 @@
 -----------------------------------------------------------------------------
-{-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
+-- | Class representing a color.
+--
+-- - https://threejs.org/docs/index.html#api/en/math/Color
+-- - https://github.com/mrdoob/three.js/blob/master/src/math/Color.js
 module THREE.Color
   ( -- * Types
     Color (..)
-    -- * Methods
-  , newColor
+    -- * Constructors
+    -- * Read-only properties
     -- * Properties
+    -- * Optional properties
+    -- * Methods
+    -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+import           Control.Monad (void)
+import           Language.Javascript.JSaddle hiding (new)
 -----------------------------------------------------------------------------
-import qualified THREE.Internal as THREE
+import           THREE.Internal as THREE
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/scenes/Color
-newtype Color
+newtype Color 
   = Color
-  { unColorCamera :: JSVal
-  } deriving (MakeObject)
+  { unColor :: JSVal
+  } deriving (MakeObject, ToJSVal, MakeArgs)
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/cameras/Color
-newColor :: JSM Color
-newColor = THREE.new Color "Color" ([] :: [JSString])
+instance FromJSVal Color where
+  fromJSVal = pure .Just . Color
 -----------------------------------------------------------------------------
+-- constructors
+-----------------------------------------------------------------------------
+-- read-only properties
+-----------------------------------------------------------------------------
+-- properties
+-----------------------------------------------------------------------------
+-- optional properties
+-----------------------------------------------------------------------------
+-- methods
+-----------------------------------------------------------------------------
+-- helper functions
+-----------------------------------------------------------------------------
+

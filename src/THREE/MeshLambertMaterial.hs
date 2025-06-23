@@ -12,7 +12,7 @@ module THREE.MeshLambertMaterial
     -- * Properties
     -- * Optional properties
   , getMatOpt
-  , setMat
+  , setMatOpt
     -- * Methods
     -- * Helper functions
   ) where
@@ -44,8 +44,8 @@ new = THREE.new' MeshLambertMaterial "MeshLambertMaterial" ()
 getMatOpt :: MeshLambertMaterial -> JSM (Maybe Texture)
 getMatOpt = mkGetOpt "map"
 -----------------------------------------------------------------------------
-setMat :: Texture -> MeshLambertMaterial -> JSM ()
-setMat = mkSet "map"
+setMatOpt :: Maybe Texture -> MeshLambertMaterial -> JSM ()
+setMatOpt = mkSetOpt "map"
 -----------------------------------------------------------------------------
 -- Methods
 -----------------------------------------------------------------------------

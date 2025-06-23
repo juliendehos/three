@@ -1,26 +1,41 @@
 -----------------------------------------------------------------------------
+{-# LANGUAGE DerivingVia #-}
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE GeneralizedNewtypeDeriving #-}
 -----------------------------------------------------------------------------
+-- | Serves as a base class for the other shadow classes.
+--
+-- - https://threejs.org/docs/index.html#api/en/lights/shadows/LightShadow
+-- - https://github.com/mrdoob/three.js/blob/master/src/lights/LightShadow.js
 module THREE.LightShadow
   ( -- * Types
-    LightShadow (..)
-    -- * Methods
-  , newLightShadow
+    LightShadowC (..)
+    -- * Constructors
+    -- * Read-only Properties
     -- * Properties
+    -- * Optional properties
+    -- * Methods
+    -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
 import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
-import qualified THREE.Internal as THREE
+import           THREE.Internal as THREE
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/scenes/LightShadow
-newtype LightShadow
-  = LightShadow
-  { unLightShadowCamera :: JSVal
-  } deriving (MakeObject)
+class LightShadowC a where
+  -- read-only properties
+  -- properties
+  getBias :: a -> JSM Double
+  setBias :: Double -> a -> JSM ()
+  modifyBias :: (Double -> JSM Double) -> a -> JSM Double
+  -- optional properties
+  -- methods
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/cameras/LightShadow
-newLightShadow :: JSM LightShadow
-newLightShadow = THREE.new LightShadow "LightShadow" ([] :: [JSString])
+instance LightShadowC JSVal where
+  -- read-only properties
+  -- properties
+  getBias = mkGet "bias"
+  setBias = mkSet "bias"
+  modifyBias = mkModify "bias"
+  -- optional properties
+  -- methods
 -----------------------------------------------------------------------------

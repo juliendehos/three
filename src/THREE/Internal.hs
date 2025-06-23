@@ -8,6 +8,7 @@ module THREE.Internal
   , mkModify
   , mkModifyOpt
   , mkSet
+  , mkSetOpt
   ) where
 
 import qualified Language.Javascript.JSaddle as J
@@ -46,6 +47,13 @@ mkGetOpt name v = fromJSVal =<< v ! name
 -- | Setting the value of a property.
 mkSet :: (MakeObject a, ToJSVal b) => JSString -> b -> a -> JSM ()
 mkSet name x v = v <# name $ x
+
+-- | Setting the value of an optional property.
+mkSetOpt :: (MakeObject a, ToJSVal b) => JSString -> Maybe b -> a -> JSM ()
+mkSetOpt name mx v = 
+  case mx of
+    Nothing -> v <# name $ ()
+    Just x -> v <# name $ x
 
 -- | Modifying a property.
 mkModify :: (MakeObject a, ToJSVal b, FromJSVal b) => JSString -> (b -> JSM b) -> a -> JSM b
