@@ -8,6 +8,7 @@ module THREE.TextureLoader
     TextureLoader (..)
     -- * Constructors
   , THREE.TextureLoader.new
+  , THREE.TextureLoader.new'
     -- * Read-only Properties
     -- * Properties
     -- * Optional properties
@@ -20,6 +21,7 @@ import           Language.Javascript.JSaddle
 -----------------------------------------------------------------------------
 import           THREE.Internal as THREE
 import           THREE.Loader as THREE
+import           THREE.LoadingManager as THREE
 import           THREE.Texture as THREE
 -----------------------------------------------------------------------------
 -- | https://threejs.org/docs/#api/en/loaders/TextureLoader
@@ -34,6 +36,9 @@ newtype TextureLoader
 new :: JSM TextureLoader
 new = THREE.new' TextureLoader "TextureLoader" ()
 -----------------------------------------------------------------------------
+new' :: LoadingManager -> JSM TextureLoader
+new' = THREE.new' TextureLoader "TextureLoader" 
+-----------------------------------------------------------------------------
 -- Read-only properties
 -----------------------------------------------------------------------------
 -- Properties
@@ -44,6 +49,7 @@ new = THREE.new' TextureLoader "TextureLoader" ()
 -----------------------------------------------------------------------------
 load :: JSString -> TextureLoader -> JSM Texture
 load url (TextureLoader v) = Texture <$> (v # ("load" :: JSString) $ [url])
+-- TODO onLoad, onProgress, onError?
 -----------------------------------------------------------------------------
 -- Helper functions
 -----------------------------------------------------------------------------

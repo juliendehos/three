@@ -17,10 +17,10 @@ module THREE.Color
     -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
-import           Control.Monad (void)
+-- import           Control.Monad (void)
 import           Language.Javascript.JSaddle hiding (new)
 -----------------------------------------------------------------------------
-import           THREE.Internal as THREE
+-- import           THREE.Internal as THREE
 -----------------------------------------------------------------------------
 newtype Color 
   = Color

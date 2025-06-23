@@ -100,7 +100,7 @@ $ nix-shell --run 'cabal build'
   - [ ] [TextureUtils](https://threejs.org/docs/#api/en/extras/TextureUtils)
 
 #### Geometries
-  - [ ] [BoxGeometry](https://threejs.org/docs/#api/en/geometries/BoxGeometry)
+  - [x] [BoxGeometry](https://threejs.org/docs/#api/en/geometries/BoxGeometry)
   - [ ] [CapsuleGeometry](https://threejs.org/docs/#api/en/geometries/CapsuleGeometry)
   - [ ] [CircleGeometry](https://threejs.org/docs/#api/en/geometries/CircleGeometry)
   - [ ] [ConeGeometry](https://threejs.org/docs/#api/en/geometries/ConeGeometry)
@@ -162,13 +162,13 @@ $ nix-shell --run 'cabal build'
   - [ ] [FileLoader](https://threejs.org/docs/#api/en/loaders/FileLoader)
   - [ ] [ImageBitmapLoader](https://threejs.org/docs/#api/en/loaders/ImageBitmapLoader)
   - [ ] [ImageLoader](https://threejs.org/docs/#api/en/loaders/ImageLoader)
-  - [ ] [Loader](https://threejs.org/docs/#api/en/loaders/Loader)
+  - [x] [Loader](https://threejs.org/docs/#api/en/loaders/Loader)
   - [ ] [LoaderUtils](https://threejs.org/docs/#api/en/loaders/LoaderUtils)
   - [ ] [DefaultLoadingManager](https://threejs.org/docs/#api/en/loaders/managers/DefaultLoadingManager)
   - [ ] [LoadingManager](https://threejs.org/docs/#api/en/loaders/managers/LoadingManager)
   - [ ] [MaterialLoader](https://threejs.org/docs/#api/en/loaders/MaterialLoader)
   - [ ] [ObjectLoader](https://threejs.org/docs/#api/en/loaders/ObjectLoader)
-  - [ ] [TextureLoader](https://threejs.org/docs/#api/en/loaders/TextureLoader)
+  - [x] [TextureLoader](https://threejs.org/docs/#api/en/loaders/TextureLoader)
 
 #### Materials
   - [ ] [LineBasicMaterial](https://threejs.org/docs/#api/en/materials/LineBasicMaterial)

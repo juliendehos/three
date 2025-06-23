@@ -1,26 +1,45 @@
 -----------------------------------------------------------------------------
-{-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
+-- | Handles and keeps track of loaded and pending data.
+--
+-- - https://threejs.org/docs/index.html#api/en/loaders/managers/LoadingManager
+-- - https://github.com/mrdoob/three.js/blob/master/src/loaders/LoadingManager.js
 module THREE.LoadingManager
   ( -- * Types
     LoadingManager (..)
-    -- * Methods
-  , newLoadingManager
+    -- * Constructors
+    -- * Read-only properties
     -- * Properties
+    -- * Optional properties
+    -- * Methods
+    -- * Helper functions
   ) where
 -----------------------------------------------------------------------------
-import           Language.Javascript.JSaddle
+-- import           Control.Monad (void)
+import           Language.Javascript.JSaddle hiding (new)
 -----------------------------------------------------------------------------
-import qualified THREE.Internal as THREE
+-- import           THREE.Internal as THREE
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/scenes/LoadingManager
-newtype LoadingManager
+newtype LoadingManager 
   = LoadingManager
-  { unLoadingManagerCamera :: JSVal
-  } deriving (MakeObject)
+  { unLoadingManager :: JSVal
+  } deriving (MakeObject, ToJSVal, MakeArgs)
 -----------------------------------------------------------------------------
--- | https://threejs.org/docs/#api/en/cameras/LoadingManager
-newLoadingManager :: JSM LoadingManager
-newLoadingManager = THREE.new LoadingManager "LoadingManager" ([] :: [JSString])
+instance FromJSVal LoadingManager where
+  fromJSVal = pure .Just . LoadingManager
 -----------------------------------------------------------------------------
+-- constructors
+-----------------------------------------------------------------------------
+-- read-only properties
+-----------------------------------------------------------------------------
+-- properties
+-----------------------------------------------------------------------------
+-- optional properties
+-----------------------------------------------------------------------------
+-- methods
+-----------------------------------------------------------------------------
+-- helper functions
+-----------------------------------------------------------------------------
+
